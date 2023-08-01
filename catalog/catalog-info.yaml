@@ -1,0 +1,14 @@
+apiVersion: backstage.io/v1alpha1
+kind: Location
+metadata:
+  name: eot-catalog-info
+  description: Catalog for the 'EOT' app
+  tags:
+  - web
+spec:
+  targets:
+  - ./components/eot-a.yaml
+  - ./components/eot-b.yaml
+  - ./components/eot-config-server.yaml
+  - ./components/eot-eureka-server.yaml
+  - ./systems/eot-system.yaml

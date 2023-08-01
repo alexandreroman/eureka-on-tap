@@ -1,0 +1,11 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: eot-config-server
+  annotations:
+    backstage.io/kubernetes-label-selector: app.kubernetes.io/part-of=eot-config-server
+spec:
+  type: service
+  lifecycle: experimental
+  owner: eot-team
+  system: eot

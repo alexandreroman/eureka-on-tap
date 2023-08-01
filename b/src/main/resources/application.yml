@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: eot-b
+  config:
+    import: optional:configserver:http://localhost:8888
+
+server:
+  port: ${PORT:0}
+
+---
+
+spring:
+  config:
+    activate:
+      on-cloud-platform: kubernetes
+    import: configserver:http://eot-config-server:8080

@@ -1,0 +1,40 @@
+spring:
+  application:
+    name: eot-config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/alexandreroman/eureka-on-tap.git
+          search-paths:
+          - conf
+          force-pull: true
+          refresh-rate: 4
+
+server:
+  port: ${PORT:8888}
+
+eureka:
+  instance:
+    preferIpAddress: true
+    lease-expiration-duration-in-seconds: 5
+    lease-renewal-interval-in-seconds: 5
+  client:
+    serviceUrl:
+      initialInstanceInfoReplicationIntervalSeconds: 5
+      registryFetchIntervalSeconds: 5
+
+---
+
+spring:
+  config:
+    activate:
+      on-cloud-platform: kubernetes
+
+eureka:
+  instance:
+    health-check-url: http://${spring.application.name}:8081/actuator/health
+    hostname: ${spring.application.name}
+  client:
+    serviceUrl:
+      defaultZone: http://eot-eureka-server:8080/eureka/

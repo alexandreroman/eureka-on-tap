@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: eot-eureka-server
+
+server:
+  port: ${PORT:8761}
+
+---
+
+spring:
+  config:
+    activate:
+      on-cloud-platform: kubernetes
+
+eureka:
+  instance:
+    hostname: ${spring.application.name}
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/

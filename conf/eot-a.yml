@@ -1,0 +1,2 @@
+app:
+  greetings: "Got result: %s (%s) --> %s"

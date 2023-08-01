@@ -1,0 +1,11 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: eot-eureka-server
+  annotations:
+    backstage.io/kubernetes-label-selector: app.kubernetes.io/part-of=eot-eureka-server
+spec:
+  type: service
+  lifecycle: experimental
+  owner: eot-team
+  system: eot

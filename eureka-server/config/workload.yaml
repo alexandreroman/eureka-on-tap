@@ -1,0 +1,30 @@
+apiVersion: carto.run/v1alpha1
+kind: Workload
+metadata:
+  name: eot-eureka-server
+  labels:
+    apps.tanzu.vmware.com/workload-type: server
+    apps.tanzu.vmware.com/has-tests: "true"
+    app.kubernetes.io/part-of: eot-eureka-server
+spec:
+  source:
+    git:
+      url: https://github.com/alexandreroman/eureka-on-tap.git
+      ref:
+        branch: main
+    subPath: eureka-server
+  build:
+    env:
+    - name: BP_JVM_VERSION
+      value: "17"
+  resources:
+    limits:
+      memory: 1Gi
+    requests:
+      memory: 1Gi
+      cpu: 1000m
+  params:
+  - name: testing_pipeline_matching_labels
+    value:
+      apps.tanzu.vmware.com/pipeline: test
+      apps.tanzu.vmware.com/language: skip
