@@ -3,10 +3,22 @@ eureka:
     preferIpAddress: true
     lease-expiration-duration-in-seconds: 5
     lease-renewal-interval-in-seconds: 5
-    health-check-url: http://${spring.application.name}:8081/actuator/health
     hostname: ${spring.application.name}
   client:
     serviceUrl:
-      defaultZone: http://eot-eureka-server:8080/eureka/
       initialInstanceInfoReplicationIntervalSeconds: 5
       registryFetchIntervalSeconds: 5
+
+---
+
+spring:
+  config:
+    activate:
+      on-cloud-platform: kubernetes
+
+eureka:
+  instance:
+    health-check-url: http://${spring.application.name}:8081/actuator/health
+  client:
+    serviceUrl:
+      defaultZone: http://eot-eureka-server:8080/eureka/

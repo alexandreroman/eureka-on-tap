@@ -5,13 +5,6 @@ spring:
 server:
   port: ${PORT:8761}
 
----
-
-spring:
-  config:
-    activate:
-      on-cloud-platform: kubernetes
-
 eureka:
   instance:
     hostname: ${spring.application.name}
